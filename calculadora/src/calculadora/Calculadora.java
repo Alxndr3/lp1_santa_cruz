@@ -261,16 +261,16 @@ public void operacao() {
 		button_0.setBounds(80, 310, 60, 50);
 		frame.getContentPane().add(button_0);
 		
-		JButton button_porcento = new JButton("%");
-		button_porcento.setForeground(new Color(30, 144, 255));
-		button_porcento.setFont(new Font("Dialog", Font.BOLD, 18));
-		button_porcento.setBackground(new Color(25, 25, 112));
-		button_porcento.addActionListener(new ActionListener() {
+		JButton button_percent = new JButton("%");
+		button_percent.setForeground(new Color(30, 144, 255));
+		button_percent.setFont(new Font("Dialog", Font.BOLD, 18));
+		button_percent.setBackground(new Color(25, 25, 112));
+		button_percent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		button_porcento.setBounds(140, 110, 60, 50);
-		frame.getContentPane().add(button_porcento);
+		button_percent.setBounds(140, 110, 60, 50);
+		frame.getContentPane().add(button_percent);
 		
 		JButton button_9 = new JButton("9");
 		button_9.addActionListener(new ActionListener() {
@@ -308,8 +308,8 @@ public void operacao() {
 		button_3.setBounds(140, 260, 60, 50);
 		frame.getContentPane().add(button_3);
 		
-		JButton button_ponto = new JButton(".");
-		button_ponto.addActionListener(new ActionListener() {
+		JButton button_dot = new JButton(".");
+		button_dot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(!is_decimal) {
 					display.setText(display.getText() + '.');
@@ -317,24 +317,25 @@ public void operacao() {
 				}
 			}
 		});
-		button_ponto.setFont(new Font("Dialog", Font.BOLD, 18));
-		button_ponto.setForeground(new Color(32, 178, 170));
-		button_ponto.setBackground(new Color(0, 0, 0));
-		button_ponto.setBounds(140, 310, 60, 50);
-		frame.getContentPane().add(button_ponto);
+		button_dot.setFont(new Font("Dialog", Font.BOLD, 18));
+		button_dot.setForeground(new Color(32, 178, 170));
+		button_dot.setBackground(new Color(0, 0, 0));
+		button_dot.setBounds(140, 310, 60, 50);
+		frame.getContentPane().add(button_dot);
 		
 		JButton button_div = new JButton("÷");
 		button_div.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
-						calc = 4;
 						if(signal) {
 							operacao();
+							calc = 4;
 						}
 						else {
-						display_result.setText(display.getText());
-						display.setText("");
-						signal = true;
+							display_result.setText(display.getText());
+							display.setText("");
+							signal = true;
+							calc = 4;
 						}
 				}
 			}
@@ -351,14 +352,15 @@ public void operacao() {
 		button_multi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
-						calc = 3;
 						if(signal) {
 							operacao();
+							calc = 3;
 						}
 						else {
-						display_result.setText(display.getText());
-						display.setText("");
-						signal = true;
+							display_result.setText(display.getText());
+							display.setText("");
+							signal = true;
+							calc = 3;
 						}
 				}
 			}
@@ -371,14 +373,15 @@ public void operacao() {
 		button_sub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
-						calc = 3;
 						if(signal) {
 							operacao();
+							calc = 2;
 						}
 						else {
-						display_result.setText(display.getText());
-						display.setText("");
-						signal = true;
+							display_result.setText(display.getText());
+							display.setText("");
+							signal = true;
+							calc = 2;
 						}
 				}
 			}
@@ -389,41 +392,42 @@ public void operacao() {
 		button_sub.setBounds(200, 210, 60, 50);
 		frame.getContentPane().add(button_sub);
 		
-		JButton button_soma = new JButton("+");
-		button_soma.addActionListener(new ActionListener() {
+		JButton button_sum = new JButton("+");
+		button_sum.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Este If é para caso o botão + seja precionado antes de um número não causar uma exceção
 				if(display.getText().length() > 0) {
-						calc = 1;
 						if(signal) {
 							operacao();
+							calc = 1;
 						}
 						else {
-						display_result.setText(display.getText());
-						display.setText("");
-						signal = true;
+							display_result.setText(display.getText());
+							display.setText("");
+							signal = true;
+							calc = 1;
 						}
 				}
 			}
 		});
-		button_soma.setFont(new Font("Dialog", Font.BOLD, 18));
-		button_soma.setForeground(new Color(30, 144, 255));
-		button_soma.setBackground(new Color(25, 25, 112));
-		button_soma.setBounds(200, 260, 60, 50);
-		frame.getContentPane().add(button_soma);
+		button_sum.setFont(new Font("Dialog", Font.BOLD, 18));
+		button_sum.setForeground(new Color(30, 144, 255));
+		button_sum.setBackground(new Color(25, 25, 112));
+		button_sum.setBounds(200, 260, 60, 50);
+		frame.getContentPane().add(button_sum);
 		
-		JButton button_igual = new JButton("=");
-		button_igual.setFont(new Font("Dialog", Font.BOLD, 18));
-		button_igual.setForeground(new Color(255, 255, 255));
-		button_igual.setBackground(Color.BLUE);
-		button_igual.addActionListener(new ActionListener() {
+		JButton button_equal = new JButton("=");
+		button_equal.setFont(new Font("Dialog", Font.BOLD, 18));
+		button_equal.setForeground(new Color(255, 255, 255));
+		button_equal.setBackground(Color.BLUE);
+		button_equal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
 					operacao();
 				}
 			}
 		});
-		button_igual.setBounds(200, 310, 60, 50);
-		frame.getContentPane().add(button_igual);
+		button_equal.setBounds(200, 310, 60, 50);
+		frame.getContentPane().add(button_equal);
 	}
 }

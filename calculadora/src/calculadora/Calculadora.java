@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
-import javax.swing.JLabel;
+//import javax.swing.JLabel;
 
 public class Calculadora {
 
@@ -267,6 +267,12 @@ public void operacao() {
 		button_percent.setBackground(new Color(25, 25, 112));
 		button_percent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(display.getText().length() > 0 && display_result.getText().length() > 0) {
+					Double percent = Double.parseDouble(display_result.getText()) 
+							/ 100 * Double.parseDouble(display.getText());
+					display.setText(Double.toString(percent));
+
+				}
 			}
 		});
 		button_percent.setBounds(140, 110, 60, 50);
@@ -311,6 +317,7 @@ public void operacao() {
 		JButton button_dot = new JButton(".");
 		button_dot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Este if permite que o ponto seja inserido apenas uma vez.
 				if(!is_decimal) {
 					display.setText(display.getText() + '.');
 					is_decimal = true;
@@ -327,16 +334,15 @@ public void operacao() {
 		button_div.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
-						if(signal) {
-							operacao();
-							calc = 4;
-						}
-						else {
-							display_result.setText(display.getText());
-							display.setText("");
-							signal = true;
-							calc = 4;
-						}
+					if(signal) {
+						operacao();
+					}
+					else {
+						display_result.setText(display.getText());
+						display.setText("");
+						signal = true;
+					}
+					calc = 4;
 				}
 			}
 		});
@@ -352,16 +358,15 @@ public void operacao() {
 		button_multi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
-						if(signal) {
-							operacao();
-							calc = 3;
-						}
-						else {
-							display_result.setText(display.getText());
-							display.setText("");
-							signal = true;
-							calc = 3;
-						}
+					if(signal) {
+						operacao();
+					}
+					else {
+						display_result.setText(display.getText());
+						display.setText("");
+						signal = true;
+					}
+					calc = 3;
 				}
 			}
 		});
@@ -373,17 +378,16 @@ public void operacao() {
 		button_sub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(display.getText().length() > 0) {
-						if(signal) {
-							operacao();
-							calc = 2;
-						}
-						else {
-							display_result.setText(display.getText());
-							display.setText("");
-							signal = true;
-							calc = 2;
-						}
+					if(signal) {
+						operacao();
+					}
+					else {
+						display_result.setText(display.getText());
+						display.setText("");
+						signal = true;
+					}
 				}
+					calc = 2;
 			}
 		});
 		button_sub.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -397,17 +401,17 @@ public void operacao() {
 			public void actionPerformed(ActionEvent e) {
 				// Este If é para caso o botão + seja precionado antes de um número não causar uma exceção
 				if(display.getText().length() > 0) {
-						if(signal) {
-							operacao();
-							calc = 1;
-						}
-						else {
-							display_result.setText(display.getText());
-							display.setText("");
-							signal = true;
-							calc = 1;
-						}
+					if(signal) {
+						operacao();
+					}
+					else {
+						display_result.setText(display.getText());
+						display.setText("");
+						signal = true;
+					}
 				}
+					calc = 1;
+
 			}
 		});
 		button_sum.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -422,9 +426,9 @@ public void operacao() {
 		button_equal.setBackground(Color.BLUE);
 		button_equal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(display.getText().length() > 0) {
-					operacao();
-				}
+				System.out.println(calc);
+				System.out.println(signal);
+				operacao();
 			}
 		});
 		button_equal.setBounds(200, 310, 60, 50);

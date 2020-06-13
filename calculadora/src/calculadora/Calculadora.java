@@ -202,16 +202,18 @@ public void operacao() {
 		button_abs.setBounds(20, 310, 60, 50);
 		frame.getContentPane().add(button_abs);
 		
-		JButton button_parent = new JButton("()");
-		button_parent.setFont(new Font("Dialog", Font.BOLD, 18));
-		button_parent.setForeground(new Color(30, 144, 255));
-		button_parent.setBackground(new Color(25, 25, 112));
-		button_parent.addActionListener(new ActionListener() {
+		JButton btnS = new JButton("√");
+		btnS.setFont(new Font("Dialog", Font.BOLD, 18));
+		btnS.setForeground(new Color(30, 144, 255));
+		btnS.setBackground(new Color(25, 25, 112));
+		btnS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				display_result.setText(Double.toString(Math.sqrt(Double.parseDouble(display.getText()))));
+				display.setText("");
 			}
 		});
-		button_parent.setBounds(80, 110, 60, 50);
-		frame.getContentPane().add(button_parent);
+		btnS.setBounds(80, 110, 60, 50);
+		frame.getContentPane().add(btnS);
 		
 		JButton button_8 = new JButton("8");
 		button_8.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -342,8 +344,8 @@ public void operacao() {
 						display.setText("");
 						signal = true;
 					}
-					calc = 4;
 				}
+				calc = 4;
 			}
 		});
 		button_div.setFont(new Font("Dialog", Font.BOLD, 20));
@@ -366,8 +368,8 @@ public void operacao() {
 						display.setText("");
 						signal = true;
 					}
-					calc = 3;
 				}
+				calc = 3;
 			}
 		});
 		button_multi.setBackground(new Color(25, 25, 112));
@@ -387,7 +389,7 @@ public void operacao() {
 						signal = true;
 					}
 				}
-					calc = 2;
+				calc = 2;
 			}
 		});
 		button_sub.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -410,8 +412,7 @@ public void operacao() {
 						signal = true;
 					}
 				}
-					calc = 1;
-
+				calc = 1;
 			}
 		});
 		button_sum.setFont(new Font("Dialog", Font.BOLD, 18));
@@ -426,8 +427,6 @@ public void operacao() {
 		button_equal.setBackground(Color.BLUE);
 		button_equal.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(calc);
-				System.out.println(signal);
 				operacao();
 			}
 		});
